@@ -1,0 +1,27 @@
+name: serverpod_inheritance_server
+description: Starting point for a Serverpod server.
+# version: 1.0.0
+# homepage: https://www.example.com
+
+environment:
+  sdk: '>=3.5.0 <4.0.0'
+
+dependencies:
+  serverpod: 3.0.0-alpha.1
+
+dev_dependencies:
+  lints: '>=3.0.0 <7.0.0'
+  test: '^1.24.2'
+  serverpod_test: 3.0.0-alpha.1
+
+dependency_overrides: 
+  serverpod: 
+    path: C:/Users/Marcelo/Jupyter/GitHub/serverpod/packages/serverpod 
+  serverpod_serialization: 
+    path: C:/Users/Marcelo/Jupyter/GitHub/serverpod/packages/serverpod_serialization 
+  serverpod_shared: 
+    path: C:/Users/Marcelo/Jupyter/GitHub/serverpod/packages/serverpod_shared 
+  serverpod_test: 
+    path: C:/Users/Marcelo/Jupyter/GitHub/serverpod/packages/serverpod_test 
+  serverpod_lints: 
+    path: C:/Users/Marcelo/Jupyter/GitHub/serverpod/packages/serverpod_lints 

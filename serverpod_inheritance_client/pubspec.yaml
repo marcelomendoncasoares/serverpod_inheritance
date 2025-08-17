@@ -1,0 +1,14 @@
+name: serverpod_inheritance_client
+description: Starting point for a Serverpod client.
+
+environment:
+  sdk: '>=3.5.0 <4.0.0'
+
+dependencies:
+  serverpod_client: 3.0.0-alpha.1
+
+dependency_overrides: 
+  serverpod_client: 
+    path: C:/Users/Marcelo/Jupyter/GitHub/serverpod/packages/serverpod_client 
+  serverpod_serialization: 
+    path: C:/Users/Marcelo/Jupyter/GitHub/serverpod/packages/serverpod_serialization 
