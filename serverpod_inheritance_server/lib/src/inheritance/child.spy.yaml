@@ -1,0 +1,6 @@
+### A child class.
+class: Child
+extends: Parent
+fields:
+  ### The child field.
+  child: String

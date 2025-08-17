@@ -11,8 +11,18 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import 'greeting.dart' as _i2;
+import 'inheritance/grandchild.dart' as _i2;
+import 'inheritance/child.dart' as _i3;
+import 'greeting.dart' as _i4;
+import 'inheritance/container.dart' as _i5;
+import 'inheritance/other.dart' as _i6;
+import 'inheritance/parent.dart' as _i7;
 export 'greeting.dart';
+export 'inheritance/child.dart';
+export 'inheritance/container.dart';
+export 'inheritance/grandchild.dart';
+export 'inheritance/other.dart';
+export 'inheritance/parent.dart';
 export 'client.dart';
 
 class Protocol extends _i1.SerializationManager {
@@ -28,11 +38,48 @@ class Protocol extends _i1.SerializationManager {
     Type? t,
   ]) {
     t ??= T;
-    if (t == _i2.Greeting) {
-      return _i2.Greeting.fromJson(data) as T;
+    if (t == _i2.GrandChild) {
+      return _i2.GrandChild.fromJson(data) as T;
     }
-    if (t == _i1.getType<_i2.Greeting?>()) {
-      return (data != null ? _i2.Greeting.fromJson(data) : null) as T;
+    if (t == _i3.Child) {
+      return _i3.Child.fromJson(data) as T;
+    }
+    if (t == _i4.Greeting) {
+      return _i4.Greeting.fromJson(data) as T;
+    }
+    if (t == _i5.Container) {
+      return _i5.Container.fromJson(data) as T;
+    }
+    if (t == _i6.Other) {
+      return _i6.Other.fromJson(data) as T;
+    }
+    if (t == _i7.Parent) {
+      return _i7.Parent.fromJson(data) as T;
+    }
+    if (t == _i1.getType<_i2.GrandChild?>()) {
+      return (data != null ? _i2.GrandChild.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i3.Child?>()) {
+      return (data != null ? _i3.Child.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i4.Greeting?>()) {
+      return (data != null ? _i4.Greeting.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i5.Container?>()) {
+      return (data != null ? _i5.Container.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i6.Other?>()) {
+      return (data != null ? _i6.Other.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i7.Parent?>()) {
+      return (data != null ? _i7.Parent.fromJson(data) : null) as T;
+    }
+    if (t == List<_i3.Child>) {
+      return (data as List).map((e) => deserialize<_i3.Child>(e)).toList() as T;
+    }
+    if (t == Map<String, _i3.Child>) {
+      return (data as Map).map((k, v) =>
+          MapEntry(deserialize<String>(k), deserialize<_i3.Child>(v))) as T;
     }
     return super.deserialize<T>(data, t);
   }
@@ -42,8 +89,18 @@ class Protocol extends _i1.SerializationManager {
     String? className = super.getClassNameForObject(data);
     if (className != null) return className;
     switch (data) {
-      case _i2.Greeting():
+      case _i2.GrandChild():
+        return 'GrandChild';
+      case _i3.Child():
+        return 'Child';
+      case _i4.Greeting():
         return 'Greeting';
+      case _i5.Container():
+        return 'Container';
+      case _i6.Other():
+        return 'Other';
+      case _i7.Parent():
+        return 'Parent';
     }
     return null;
   }
@@ -54,8 +111,23 @@ class Protocol extends _i1.SerializationManager {
     if (dataClassName is! String) {
       return super.deserializeByClassName(data);
     }
+    if (dataClassName == 'GrandChild') {
+      return deserialize<_i2.GrandChild>(data['data']);
+    }
+    if (dataClassName == 'Child') {
+      return deserialize<_i3.Child>(data['data']);
+    }
     if (dataClassName == 'Greeting') {
-      return deserialize<_i2.Greeting>(data['data']);
+      return deserialize<_i4.Greeting>(data['data']);
+    }
+    if (dataClassName == 'Container') {
+      return deserialize<_i5.Container>(data['data']);
+    }
+    if (dataClassName == 'Other') {
+      return deserialize<_i6.Other>(data['data']);
+    }
+    if (dataClassName == 'Parent') {
+      return deserialize<_i7.Parent>(data['data']);
     }
     return super.deserializeByClassName(data);
   }

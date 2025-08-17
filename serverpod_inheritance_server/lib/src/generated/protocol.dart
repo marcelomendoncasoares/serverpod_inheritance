@@ -12,8 +12,18 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 import 'package:serverpod/protocol.dart' as _i2;
-import 'greeting.dart' as _i3;
+import 'inheritance/grandchild.dart' as _i3;
+import 'inheritance/child.dart' as _i4;
+import 'greeting.dart' as _i5;
+import 'inheritance/container.dart' as _i6;
+import 'inheritance/other.dart' as _i7;
+import 'inheritance/parent.dart' as _i8;
 export 'greeting.dart';
+export 'inheritance/child.dart';
+export 'inheritance/container.dart';
+export 'inheritance/grandchild.dart';
+export 'inheritance/other.dart';
+export 'inheritance/parent.dart';
 
 class Protocol extends _i1.SerializationManagerServer {
   Protocol._();
@@ -32,11 +42,48 @@ class Protocol extends _i1.SerializationManagerServer {
     Type? t,
   ]) {
     t ??= T;
-    if (t == _i3.Greeting) {
-      return _i3.Greeting.fromJson(data) as T;
+    if (t == _i3.GrandChild) {
+      return _i3.GrandChild.fromJson(data) as T;
     }
-    if (t == _i1.getType<_i3.Greeting?>()) {
-      return (data != null ? _i3.Greeting.fromJson(data) : null) as T;
+    if (t == _i4.Child) {
+      return _i4.Child.fromJson(data) as T;
+    }
+    if (t == _i5.Greeting) {
+      return _i5.Greeting.fromJson(data) as T;
+    }
+    if (t == _i6.Container) {
+      return _i6.Container.fromJson(data) as T;
+    }
+    if (t == _i7.Other) {
+      return _i7.Other.fromJson(data) as T;
+    }
+    if (t == _i8.Parent) {
+      return _i8.Parent.fromJson(data) as T;
+    }
+    if (t == _i1.getType<_i3.GrandChild?>()) {
+      return (data != null ? _i3.GrandChild.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i4.Child?>()) {
+      return (data != null ? _i4.Child.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i5.Greeting?>()) {
+      return (data != null ? _i5.Greeting.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i6.Container?>()) {
+      return (data != null ? _i6.Container.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i7.Other?>()) {
+      return (data != null ? _i7.Other.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i8.Parent?>()) {
+      return (data != null ? _i8.Parent.fromJson(data) : null) as T;
+    }
+    if (t == List<_i4.Child>) {
+      return (data as List).map((e) => deserialize<_i4.Child>(e)).toList() as T;
+    }
+    if (t == Map<String, _i4.Child>) {
+      return (data as Map).map((k, v) =>
+          MapEntry(deserialize<String>(k), deserialize<_i4.Child>(v))) as T;
     }
     try {
       return _i2.Protocol().deserialize<T>(data, t);
@@ -49,8 +96,18 @@ class Protocol extends _i1.SerializationManagerServer {
     String? className = super.getClassNameForObject(data);
     if (className != null) return className;
     switch (data) {
-      case _i3.Greeting():
+      case _i3.GrandChild():
+        return 'GrandChild';
+      case _i4.Child():
+        return 'Child';
+      case _i5.Greeting():
         return 'Greeting';
+      case _i6.Container():
+        return 'Container';
+      case _i7.Other():
+        return 'Other';
+      case _i8.Parent():
+        return 'Parent';
     }
     className = _i2.Protocol().getClassNameForObject(data);
     if (className != null) {
@@ -65,8 +122,23 @@ class Protocol extends _i1.SerializationManagerServer {
     if (dataClassName is! String) {
       return super.deserializeByClassName(data);
     }
+    if (dataClassName == 'GrandChild') {
+      return deserialize<_i3.GrandChild>(data['data']);
+    }
+    if (dataClassName == 'Child') {
+      return deserialize<_i4.Child>(data['data']);
+    }
     if (dataClassName == 'Greeting') {
-      return deserialize<_i3.Greeting>(data['data']);
+      return deserialize<_i5.Greeting>(data['data']);
+    }
+    if (dataClassName == 'Container') {
+      return deserialize<_i6.Container>(data['data']);
+    }
+    if (dataClassName == 'Other') {
+      return deserialize<_i7.Other>(data['data']);
+    }
+    if (dataClassName == 'Parent') {
+      return deserialize<_i8.Parent>(data['data']);
     }
     if (dataClassName.startsWith('serverpod.')) {
       data['className'] = dataClassName.substring(10);

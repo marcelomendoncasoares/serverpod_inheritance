@@ -1,0 +1,9 @@
+### A class that holds child objects.
+class: Container
+fields:
+  ### Direct contained child.
+  child: Child
+  ### List of children.
+  childrenList: List<Child>
+  ### Map of children.
+  childrenMap: Map<String, Child>

@@ -1,0 +1,6 @@
+### A grandchild class.
+class: GrandChild
+extends: Child
+fields:
+  ### The grandchild field.
+  grandchild: String

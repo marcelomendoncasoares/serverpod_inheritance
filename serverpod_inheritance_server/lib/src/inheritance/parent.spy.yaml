@@ -1,0 +1,5 @@
+### A parent class.
+class: Parent
+fields:
+  ### The parent field.
+  parent: String
