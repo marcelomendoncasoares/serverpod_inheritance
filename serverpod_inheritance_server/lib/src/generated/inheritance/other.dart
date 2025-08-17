@@ -32,12 +32,12 @@ abstract class Other
   Other copyWith({String? parent});
   @override
   Map<String, dynamic> toJson() {
-    return {'parent': parent};
+    return {'__runtimeClassName__': 'Other', 'parent': parent};
   }
 
   @override
   Map<String, dynamic> toJsonForProtocol() {
-    return {'parent': parent};
+    return {'__runtimeClassName__': 'Other', 'parent': parent};
   }
 
   @override

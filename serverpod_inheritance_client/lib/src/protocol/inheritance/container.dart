@@ -12,6 +12,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import '../inheritance/child.dart' as _i2;
+import '../protocol.dart' as _i3;
 
 /// A class that holds child objects.
 abstract class Container implements _i1.SerializableModel {
@@ -28,17 +29,14 @@ abstract class Container implements _i1.SerializableModel {
   }) = _ContainerImpl;
 
   factory Container.fromJson(Map<String, dynamic> jsonSerialization) {
+    // TODO: All deserializations must use the protocol to avoid loosing the type.
+    // We can even leverage the existing match for List and Map.
     return Container(
-      child: _i2.Child.fromJson(
-          (jsonSerialization['child'] as Map<String, dynamic>)),
-      childrenList: (jsonSerialization['childrenList'] as List)
-          .map((e) => _i2.Child.fromJson((e as Map<String, dynamic>)))
-          .toList(),
-      childrenMap:
-          (jsonSerialization['childrenMap'] as Map).map((k, v) => MapEntry(
-                k as String,
-                _i2.Child.fromJson((v as Map<String, dynamic>)),
-              )),
+      child: _i3.Protocol().deserialize<_i2.Child>(jsonSerialization['child']),
+      childrenList: _i3.Protocol()
+          .deserialize<List<_i2.Child>>(jsonSerialization['childrenList']),
+      childrenMap: _i3.Protocol().deserialize<Map<String, _i2.Child>>(
+          jsonSerialization['childrenMap']),
     );
   }
 
@@ -62,6 +60,7 @@ abstract class Container implements _i1.SerializableModel {
   @override
   Map<String, dynamic> toJson() {
     return {
+      '__runtimeClassName__': 'Container',
       'child': child.toJson(),
       'childrenList': childrenList.toJson(valueToJson: (v) => v.toJson()),
       'childrenMap': childrenMap.toJson(valueToJson: (v) => v.toJson()),

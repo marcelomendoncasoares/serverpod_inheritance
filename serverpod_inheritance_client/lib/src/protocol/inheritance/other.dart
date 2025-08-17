@@ -31,7 +31,7 @@ abstract class Other implements _i1.SerializableModel {
   Other copyWith({String? parent});
   @override
   Map<String, dynamic> toJson() {
-    return {'parent': parent};
+    return {'__runtimeClassName__': 'Other', 'parent': parent};
   }
 
   @override

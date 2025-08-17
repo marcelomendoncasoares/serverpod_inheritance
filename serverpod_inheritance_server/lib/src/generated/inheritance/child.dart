@@ -47,6 +47,7 @@ class Child extends _i1.Parent
   @override
   Map<String, dynamic> toJson() {
     return {
+      '__runtimeClassName__': 'Child',
       'parent': parent,
       'child': child,
     };
@@ -55,6 +56,7 @@ class Child extends _i1.Parent
   @override
   Map<String, dynamic> toJsonForProtocol() {
     return {
+      '__runtimeClassName__': 'Child',
       'parent': parent,
       'child': child,
     };

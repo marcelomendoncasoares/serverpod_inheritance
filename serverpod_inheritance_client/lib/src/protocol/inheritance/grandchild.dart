@@ -50,6 +50,7 @@ abstract class GrandChild extends _i1.Child implements _i2.SerializableModel {
   @override
   Map<String, dynamic> toJson() {
     return {
+      '__runtimeClassName__': 'GrandChild',
       'parent': parent,
       'child': child,
       'grandchild': grandchild,

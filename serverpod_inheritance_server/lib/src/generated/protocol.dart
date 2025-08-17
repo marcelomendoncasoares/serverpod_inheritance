@@ -36,11 +36,37 @@ class Protocol extends _i1.SerializationManagerServer {
     ..._i2.Protocol.targetTableDefinitions
   ];
 
+  static Type? getRuntimeTypeFromJson(dynamic data) {
+    if (data is Map) {
+      switch (data['__runtimeClassName__']) {
+        case 'GrandChild':
+          return _i3.GrandChild;
+        case 'Child':
+          return _i4.Child;
+        case 'Greeting':
+          return _i5.Greeting;
+        case 'Container':
+          return _i6.Container;
+        case 'Other':
+          return _i7.Other;
+        case 'Parent':
+          return _i8.Parent;
+      }
+    }
+    return null;
+  }
+
   @override
   T deserialize<T>(
     dynamic data, [
     Type? t,
   ]) {
+    // TODO: Route the deserialization for the subtype.
+    final runtimeType = getRuntimeTypeFromJson(data);
+    if (runtimeType != null && t == null) {
+      return deserialize<T>(data, runtimeType);
+    }
+
     t ??= T;
     if (t == _i3.GrandChild) {
       return _i3.GrandChild.fromJson(data) as T;
@@ -95,19 +121,21 @@ class Protocol extends _i1.SerializationManagerServer {
   String? getClassNameForObject(Object? data) {
     String? className = super.getClassNameForObject(data);
     if (className != null) return className;
+    // TODO: Types with inheritance must be sorted from the most derived to the least
+    // derived to avoid evaluating correct class.
     switch (data) {
       case _i3.GrandChild():
         return 'GrandChild';
       case _i4.Child():
         return 'Child';
+      case _i8.Parent():
+        return 'Parent';
       case _i5.Greeting():
         return 'Greeting';
       case _i6.Container():
         return 'Container';
       case _i7.Other():
         return 'Other';
-      case _i8.Parent():
-        return 'Parent';
     }
     className = _i2.Protocol().getClassNameForObject(data);
     if (className != null) {
@@ -118,7 +146,10 @@ class Protocol extends _i1.SerializationManagerServer {
 
   @override
   dynamic deserializeByClassName(Map<String, dynamic> data) {
-    var dataClassName = data['className'];
+    // TODO: Either add the always present '__runtimeClassName__' field support here
+    // or remove this alternative serialization/deserialization engine, since the
+    // default would now carry the class name information.
+    var dataClassName = data['className'] ?? data['__runtimeClassName__'];
     if (dataClassName is! String) {
       return super.deserializeByClassName(data);
     }

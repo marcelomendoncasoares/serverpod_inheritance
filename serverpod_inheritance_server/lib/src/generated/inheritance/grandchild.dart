@@ -51,6 +51,7 @@ abstract class GrandChild extends _i1.Child
   @override
   Map<String, dynamic> toJson() {
     return {
+      '__runtimeClassName__': 'GrandChild',
       'parent': parent,
       'child': child,
       'grandchild': grandchild,
@@ -60,6 +61,7 @@ abstract class GrandChild extends _i1.Child
   @override
   Map<String, dynamic> toJsonForProtocol() {
     return {
+      '__runtimeClassName__': 'GrandChild',
       'parent': parent,
       'child': child,
       'grandchild': grandchild,

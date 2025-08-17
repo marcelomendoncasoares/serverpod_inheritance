@@ -46,6 +46,7 @@ class Child extends _i1.Parent implements _i2.SerializableModel {
   @override
   Map<String, dynamic> toJson() {
     return {
+      '__runtimeClassName__': 'Child',
       'parent': parent,
       'child': child,
     };

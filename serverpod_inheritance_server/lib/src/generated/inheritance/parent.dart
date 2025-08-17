@@ -32,12 +32,12 @@ class Parent implements _i1.SerializableModel, _i1.ProtocolSerialization {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'parent': parent};
+    return {'__runtimeClassName__': 'Parent', 'parent': parent};
   }
 
   @override
   Map<String, dynamic> toJsonForProtocol() {
-    return {'parent': parent};
+    return {'__runtimeClassName__': 'Parent', 'parent': parent};
   }
 
   @override

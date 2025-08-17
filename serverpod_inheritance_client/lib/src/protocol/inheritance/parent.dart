@@ -32,7 +32,7 @@ class Parent implements _i1.SerializableModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'parent': parent};
+    return {'__runtimeClassName__': 'Parent', 'parent': parent};
   }
 
   @override
