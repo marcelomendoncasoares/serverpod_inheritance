@@ -51,6 +51,54 @@ void main() {
   });
 
   test(
+      'Given a backwards-compatible Parent JSON without runtimeClassName '
+      'when deserialized '
+      'then it deserializes as Parent.', () {
+    final json = {
+      'parent': 'This is a parent',
+    };
+
+    final deserialized = Protocol().deserialize<Parent>(json);
+
+    expect(deserialized, isA<Parent>());
+    expect(deserialized.parent, 'This is a parent');
+  });
+
+  test(
+      'Given a backwards-compatible Child JSON without runtimeClassName '
+      'when deserialized '
+      'then it deserializes as Child.', () {
+    final json = {
+      'parent': 'This is a parent',
+      'child': 'This is a child',
+    };
+
+    final deserialized = Protocol().deserialize<Child>(json);
+
+    expect(deserialized, isA<Child>());
+    expect(deserialized.parent, 'This is a parent');
+    expect(deserialized.child, 'This is a child');
+  });
+
+  test(
+      'Given a backwards-compatible GrandChild JSON without runtimeClassName '
+      'when deserialized '
+      'then it deserializes as GrandChild.', () {
+    final json = {
+      'parent': 'This is a parent',
+      'child': 'This is a child',
+      'grandchild': 'This is a grandchild',
+    };
+
+    final deserialized = Protocol().deserialize<GrandChild>(json);
+
+    expect(deserialized, isA<GrandChild>());
+    expect(deserialized.parent, 'This is a parent');
+    expect(deserialized.child, 'This is a child');
+    expect(deserialized.grandchild, 'This is a grandchild');
+  });
+
+  test(
       'Given a Child object '
       'when deserialized as Parent '
       'then it maintains the runtimeType as Child.', () {

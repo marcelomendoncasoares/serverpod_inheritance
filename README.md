@@ -61,6 +61,13 @@ by simulating which changes on the generated code would be necessary to fix the
 issue. If the solution is validated, then the source code of `serverpod_cli`
 must be changed to generate the expected code.
 
+## Backwards compatibility
+
+The added hidden field is an extra field to ensure deserialization as the
+correct runtime class, but is not required for the deserialization engine to
+work. This means that the change is backwards-compatible and will deserialize
+JSONs generated without the field correctly.
+
 ## Positive side-effects
 
 By using this solution, the `encodeWithClassName` method would no longer be
